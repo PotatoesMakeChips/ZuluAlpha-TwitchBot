@@ -1,0 +1,2 @@
+def checkMessage(message):
+    pass
