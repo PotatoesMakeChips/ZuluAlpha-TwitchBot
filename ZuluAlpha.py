@@ -2,6 +2,7 @@ import os
 import asyncio
 from twitchio.ext import commands
 import Rules
+import AlertLogger
 
 class BotChat(commands.Bot):
     ## setup
@@ -26,7 +27,7 @@ class BotChat(commands.Bot):
         # make sure the bot ignores itself and the streamer
         if message.echo:
             return
-        rules.checkMessage(message)
+        Rules.checkMessage(message.author.name,message.content)
         ## handles commands from message events
         await self.handle_commands(message)
     ## commands
@@ -36,6 +37,7 @@ class BotChat(commands.Bot):
     async def my_command(self, ctx: commands.Context):
         if ctx.author.is_mod:
             await ctx.send(f'Hello {ctx.author.name}!')
+            AlertLogger.logAlert(str(ctx.author.name),"System Test","<test command>")
 
 
 if __name__ == "__main__":
