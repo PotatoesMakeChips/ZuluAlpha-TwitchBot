@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 twitchio = "*"
+pycld3 = "*"
+requests = "*"
 
 [dev-packages]
 
