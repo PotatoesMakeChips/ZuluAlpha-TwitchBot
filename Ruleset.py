@@ -15,7 +15,7 @@ def isBadLink(message):
     link = re.match(regex, message)
 
     if link:
-        if "clips.twitch.tv" in link.groups():
+        if "clips.twitch.tv" in link.groups() or len(link.groups()) > 1:
             return False
         else:
             return True
